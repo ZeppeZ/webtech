@@ -47,7 +47,12 @@ router.put('/contacts/:name', (req, res) => {
     }
     
 })
+router.delete('/contacts/:name', (req, res) => {
+    var name = req.params.name
+    contactList.splice(name, 1)
+    res.status(204).json()
 
+})
 
 module.exports = router
 
