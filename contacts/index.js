@@ -31,6 +31,22 @@ router.get('/contacts/:name', (req, res) => {
     var name = req.params.name;
     res.json(findname(name));
 })
+router.post('/contacts/', (req, res) => {
+    var contacts = req.body
+    contactList.push(contacts)
+    res.status(201).send(contacts)
+})
+router.put('/contacts/:name', (req, res) => {
+    var edit = req.body
+    var name = req.params.name
+    for (var i = 0; i < contactList.length; i++) {
+        if (contactList[i].name == name){
+           contactList[i] = edit
+        res.status(200).json('Complete!')
+        }
+    }
+    
+})
 
 
 module.exports = router
